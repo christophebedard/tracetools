@@ -177,9 +177,11 @@ void subscriber_callback_added(const void *queue_ref_arg,
 
 /// Trace a message being queue for publishing
 void publisher_message_queued(const char *topic_arg,
-                              const void *buffer_ref_arg);
+                              const void *buffer_ref_arg,
+                              bool is_latched_msg_arg);
 void publisher_message_queued(const std::string &topic_arg,
-                              const void *buffer_ref_arg);
+                              const void *buffer_ref_arg,
+                              bool is_latched_msg_arg);
 /// Trace on a message being written to the socket
 void subscriber_link_message_write(const void *message_ref_arg,
                                    const void *channel_ref_arg);

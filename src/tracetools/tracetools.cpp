@@ -163,16 +163,17 @@ void publisher_link_handle_message(const void* channel_ref_arg,
 }
 
 void publisher_message_queued(const char* topic_arg,
-		const void* buffer_ref_arg) {
+		const void* buffer_ref_arg, bool is_latched_msg_arg) {
 #ifdef WITH_LTTNG
-	tracepoint(roscpp, publisher_message_queued, topic_arg, buffer_ref_arg);
+	tracepoint(roscpp, publisher_message_queued, topic_arg,
+			buffer_ref_arg, (is_latched_msg_arg ? 1 : 0));
 #endif
 }
 void publisher_message_queued(const std::string& topic_arg,
-		const void* buffer_ref_arg) {
+		const void* buffer_ref_arg, bool is_latched_msg_arg) {
 #ifdef WITH_LTTNG
 	tracepoint(roscpp, publisher_message_queued, topic_arg.c_str(),
-			buffer_ref_arg);
+			buffer_ref_arg, (is_latched_msg_arg ? 1 : 0));
 #endif
 }
 void subscriber_link_message_write(const void* message_ref_arg,

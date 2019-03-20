@@ -276,11 +276,13 @@ TRACEPOINT_EVENT(
 	publisher_message_queued,
 	TP_ARGS(
 			const char*, topic_arg,
-			const void*, buffer_ref_arg
+			const void*, buffer_ref_arg,
+			int, is_latched_msg_arg
 	),
 	TP_FIELDS(
 		ctf_string(topic, topic_arg)
 		ctf_integer_hex(const void*, buffer_ref, buffer_ref_arg)
+		ctf_integer(int, is_latched_msg, is_latched_msg_arg)
 	)
 )
 TRACEPOINT_EVENT(
