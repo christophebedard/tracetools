@@ -154,6 +154,15 @@ void new_connection(const char* local_hostport_arg,
 			channel_ref_arg, channel_type_arg, name_arg, data_type_arg);
 #endif
 }
+void connection_dropped(const char *local_hostport_arg,
+		const char *remote_hostport_arg,
+		const void *channel_ref_arg, const char *channel_type_arg,
+		const char *name_arg, const char *data_type_arg) {
+#ifdef WITH_LTTNG
+	tracepoint(roscpp, connection_dropped, local_hostport_arg, remote_hostport_arg,
+			channel_ref_arg, channel_type_arg, name_arg, data_type_arg);
+#endif
+}
 void publisher_link_handle_message(const void* channel_ref_arg,
 		const void* buffer_ref_arg) {
 #ifdef WITH_LTTNG

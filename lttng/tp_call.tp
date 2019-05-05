@@ -22,25 +22,51 @@ TRACEPOINT_EVENT(
 		ctf_string(node_name, node_name_arg)
 	)
 )
-TRACEPOINT_EVENT(
-    roscpp,
-    new_connection,
-    TP_ARGS(
-    	const char*, local_hostport_arg,
+TRACEPOINT_EVENT_CLASS(
+	roscpp,
+	connection,
+	TP_ARGS(
+		const char*, local_hostport_arg,
 		const char*, remote_hostport_arg,
 		const void*, channel_ref_arg,
 		const char*, channel_type_arg,
 		const char*, name_arg,
 		const char*, data_type_arg
-    ),
-    TP_FIELDS(
+	),
+	TP_FIELDS(
 		ctf_string(local_hostport, local_hostport_arg)
 		ctf_string(remote_hostport, remote_hostport_arg)
 		ctf_integer_hex(const void*, channel_ref, channel_ref_arg)
 		ctf_string(channel_type, channel_type_arg)
 		ctf_string(name, name_arg)
 		ctf_string(data_type, data_type_arg)
-    )
+	)
+)
+TRACEPOINT_EVENT_INSTANCE(
+	roscpp,
+	connection,
+	new_connection,
+	TP_ARGS(
+		const char*, local_hostport_arg,
+		const char*, remote_hostport_arg,
+		const void*, channel_ref_arg,
+		const char*, channel_type_arg,
+		const char*, name_arg,
+		const char*, data_type_arg
+	)
+)
+TRACEPOINT_EVENT_INSTANCE(
+	roscpp,
+	connection,
+	connection_dropped,
+	TP_ARGS(
+		const char*, local_hostport_arg,
+		const char*, remote_hostport_arg,
+		const void*, channel_ref_arg,
+		const char*, channel_type_arg,
+		const char*, name_arg,
+		const char*, data_type_arg
+	)
 )
 TRACEPOINT_EVENT(
 	roscpp,

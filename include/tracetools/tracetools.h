@@ -165,6 +165,10 @@ void new_connection(const char *local_hostport_arg,
                     const char *remote_hostport_arg,
                     const void *channel_ref_arg, const char *channel_type_arg,
                     const char *name_arg, const char *data_type_arg);
+void connection_dropped(const char *local_hostport_arg,
+                        const char *remote_hostport_arg,
+                        const void *channel_ref_arg, const char *channel_type_arg,
+                        const char *name_arg, const char *data_type_arg);
 /// Trace metadata on creation of a publisher link (incoming topic connection)
 void publisher_link_handle_message(const void *channel_ref_arg,
                                    const void *buffer_ref_arg);
